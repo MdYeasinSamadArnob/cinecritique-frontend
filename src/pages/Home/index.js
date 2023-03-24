@@ -12,13 +12,7 @@ const Home = () => {
         className="absolute top-[0px] left-[0px] [background:radial-gradient(50%_50%_at_50%_50%,_rgba(26,_163,_175,_0.9),_rgba(3,_59,_60,_0.9))] w-[1920px] h-[711px] text-left text-base text-white font-montserrat-bold"
         id="header_main"
       >
-        <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] [background:radial-gradient(50%_50%_at_50%_50%,_rgba(26,_163,_175,_0.95),_rgba(11,_106,_119,_0.95))]">
-          <img
-            className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] max-w-full overflow-hidden max-h-full object-cover"
-            alt=""
-            src="/bitmap13@2x.png"
-          />
-        </div>
+        
         <img
           className="absolute bottom-[1px] left-[calc(50%_-_6px)] w-[600px] h-[426px] object-cover"
           alt=""
@@ -46,7 +40,9 @@ const Home = () => {
       {/* <Footer/> */}
     
     </div>
+    <div className="mx-auto w-3/4 ">
     <MovieCard/>
+    </div>
     <Footer/>
     </>
     // <div className="relative bg-white w-full h-[6042px] text-left text-base text-white font-montserrat-bold">

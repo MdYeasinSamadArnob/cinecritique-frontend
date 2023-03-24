@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Navbar from '../../components/Navbar';
 
 function Copyright(props) {
   return (
@@ -33,12 +34,36 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+        name: data.get('Name'),
       email: data.get('email'),
       password: data.get('password'),
     });
+    // fetch to user signup
+    fetch("https://cinecritique.cyclic.app/user/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: data.get('Name'),
+                email: data.get('email'),
+                password: data.get('password'),
+                }),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("Success:", data);
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        }
+                        );
+
   };
 
   return (
+    <div >
+    <Navbar/>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -61,15 +86,15 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="Name"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="Name"
+                  label="Name"
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -78,7 +103,7 @@ export default function SignUp() {
                   name="lastName"
                   autoComplete="family-name"
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -100,14 +125,15 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
                   label="I want to receive inspiration, marketing promotions and updates via email."
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
             <Button
+           
               type="submit"
               fullWidth
               variant="contained"
@@ -117,15 +143,16 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signin" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
+        {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
+    </div>
   );
 }

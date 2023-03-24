@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Navbar from '../../components/Navbar';
 
 function Copyright(props) {
   return (
@@ -39,6 +40,8 @@ export default function SignIn() {
   };
 
   return (
+    <div className='bg-green-600'>
+    <Navbar/>
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
@@ -123,5 +126,6 @@ export default function SignIn() {
         </Grid>
       </Grid>
     </ThemeProvider>
+    </div>
   );
 }

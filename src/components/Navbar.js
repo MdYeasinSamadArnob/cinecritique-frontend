@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
 
@@ -26,7 +27,7 @@ export default function Navbar() {
     setDrawerOpen(!drawerOpen);
   };
 
-  const menuItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+  const menuItems = ['Home', 'SignIn', 'SignUp', 'About'];
 
   return (
    
@@ -36,45 +37,15 @@ export default function Navbar() {
                 <MenuIcon />
               </IconButton> */}
               <Typography variant="h6" noWrap className='text-white'>
-                MyApp
+                CineCritique
               </Typography>
               <div className='flex justify-center items-center flex-grow text-white'>
                 {menuItems.map((item, index) => (
                   <MenuItem key={index} onClick={handleMenuClose}>
-                    {item}
+                    <Link to={item==='Home'?'/':`/${item.toLowerCase()}`}>{item}</Link>
                   </MenuItem>
                 ))}
-                {/* <IconButton
-                  edge="end"
-                  color="inherit"
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenuOpen}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={menuAnchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(menuAnchorEl)}
-                  onClose={handleMenuClose}
-                >
-                  {menuItems.map((item, index) => (
-                    <MenuItem key={index} onClick={handleMenuClose}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Menu> */}
+               
               </div>
               <IconButton
                   edge="end"
@@ -103,7 +74,7 @@ export default function Navbar() {
                 >
                   {menuItems.map((item, index) => (
                     <MenuItem key={index} onClick={handleMenuClose}>
-                      {item}
+                   <Link to={item==='Home'?'/':`/${item.toLowerCase()}`}>{item}</Link>
                     </MenuItem>
                   ))}
                 </Menu>
